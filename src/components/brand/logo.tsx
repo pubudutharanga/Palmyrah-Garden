@@ -81,7 +81,7 @@ export function Logo({
           <span
             className={cn(
               "font-deco mt-0.5 text-[0.6875rem] leading-none tracking-[0.08em]",
-              inverted ? "text-salt/65" : "text-ink/55",
+              inverted ? "text-salt/65" : "text-ink/65",
             )}
           >
             Madhu, Sri Lanka

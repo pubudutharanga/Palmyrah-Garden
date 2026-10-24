@@ -8,6 +8,7 @@ import {
   ChevronRight,
   History,
   LayoutGrid,
+  LogOut,
   RefreshCcw,
   ShieldAlert,
 } from "lucide-react";
@@ -17,6 +18,7 @@ import { Logo } from "@/components/brand/logo";
 import { usePrototypeState } from "@/lib/prototype/hooks";
 import { resetPrototypeState } from "@/lib/prototype/store";
 import { cn } from "@/lib/utils";
+import { signOutOfFrontDesk } from "@/server/actions/front-desk";
 
 const NAV = [
   { href: "/admin/room-board", label: "Room board", icon: LayoutGrid },
@@ -80,8 +82,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
         <div className="space-y-3 border-t border-salt/10 px-6 py-5 text-xs text-salt/55">
           <p>
-            No login in the prototype. Data is stored in this browser only; Mongo and
-            Cloudinary come later.
+            Prototype login. Data is stored in this browser only; Mongo and Cloudinary
+            come later.
           </p>
           {confirmingReset ? (
             <span className="flex flex-wrap gap-2">
@@ -113,6 +115,15 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <Link href="/rooms" className="block text-salt/70 underline decoration-salt/25 underline-offset-4 hover:text-salt">
             Open the guest site
           </Link>
+          <form action={signOutOfFrontDesk}>
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 text-salt/70 underline decoration-salt/25 underline-offset-4 hover:text-salt"
+            >
+              <LogOut className="h-3.5 w-3.5" aria-hidden="true" />
+              Sign out
+            </button>
+          </form>
         </div>
       </aside>
 
@@ -121,7 +132,20 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <Link href="/admin/room-board" aria-label="Palmyrah admin, room board">
             <Logo inverted short />
           </Link>
-          <span className="text-xs text-salt/60">Prototype front desk</span>
+          <div className="flex items-center gap-3">
+            <span className="hidden text-xs text-salt/60 sm:inline">
+              Prototype front desk
+            </span>
+            <form action={signOutOfFrontDesk}>
+              <button
+                type="submit"
+                className="inline-flex min-h-9 items-center gap-1.5 text-xs text-salt/70 transition-colors hover:text-salt"
+              >
+                <LogOut className="h-3.5 w-3.5" aria-hidden="true" />
+                Sign out
+              </button>
+            </form>
+          </div>
         </div>
         <nav className="mt-3 flex gap-1 overflow-x-auto no-scrollbar" aria-label="Admin mobile">
           {NAV.map((item) => {
