@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+@theme {
+  --color-salt: #f3f5f0;
+  --color-dune: #e6e8df;
+  --color-ink: #14261f;
+  --color-frond: #3f6b4b;
+  --color-gulf: #2f7a7c;
+  --color-jaggery: #c08a2e;
+  --color-danger: #a8362b;
+  --color-booked: #7c8782;
+  --color-blocked: #51605a;
+  --color-status-free: #5c9b6b;
+  --color-status-pending: #e6b13c;
+  --color-status-booked: #b4463a;
+  --color-status-inhouse: #35618f;
+  --color-status-blocked: #58645e;
+
+  --font-display: var(--font-fraunces), "Noto Serif Tamil", ui-serif, Georgia, serif;
+  --font-sans: var(--font-hanken), "Noto Sans Tamil", "Noto Sans Sinhala", ui-sans-serif,
+    system-ui, sans-serif;
+  --font-script: var(--font-great-vibes), "Segoe Script", "Brush Script MT", cursive;
+  --font-deco: var(--font-limelight), "Broadway", ui-serif, Georgia, serif;
+
+  --radius-photo: 2px;
+  --radius-input: 12px;
+  --radius-panel: 20px;
+
+  --shadow-lift: 0 18px 50px -20px color-mix(in oklab, var(--color-ink) 45%, transparent);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root {
+  --salt: #f3f5f0;
+  --dune: #e6e8df;
+  --ink: #14261f;
+  --frond: #3f6b4b;
+  --gulf: #2f7a7c;
+  --jaggery: #c08a2e;
+  --danger: #a8362b;
+  --booked: #7c8782;
+  --blocked: #51605a;
+  --status-free: #5c9b6b;
+  --status-pending: #e6b13c;
+  --status-booked: #b4463a;
+  --status-inhouse: #35618f;
+  --status-blocked: #58645e;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: var(--dune);
+  }
+
+  html {
+    background: var(--salt);
+    color: var(--ink);
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: var(--salt);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-feature-settings: "kern";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gulf);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--jaggery);
+    color: var(--ink);
+  }
+
+  button,
+  [role="button"],
+  a {
+    touch-action: manipulation;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: color-mix(in oklab, var(--ink) 45%, transparent);
+  }
+
+  [data-sonner-toast] {
+    font-family: var(--font-sans);
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 4vw, 48px);
+  }
+
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3.4rem, 2rem + 6vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 1.8rem + 3.8vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
+  .h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 1.7rem + 2.6vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+
+  .h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 1.45rem + 1.6vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .body-lg {
+    font-size: 1.1875rem;
+    line-height: 1.65;
+  }
+
+  .body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  .small {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .caption {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .measure {
+    max-width: 68ch;
+  }
+
+  .measure-tight {
+    max-width: 46ch;
+  }
+
+  .hairline {
+    border-color: var(--dune);
+  }
+
+  .link-quiet {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in oklab, currentColor 35%, transparent);
+    transition: text-decoration-color 160ms var(--ease-out);
+  }
+
+  .link-quiet:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .palm-watermark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%23F3F5F0' stroke-width='1.1'%3E%3Cpath d='M260 500C260 380 260 260 260 120'/%3E%3Cpath d='M260 150C200 95 140 78 78 96 132 124 190 148 260 178'/%3E%3Cpath d='M260 150C320 95 380 78 442 96 388 124 330 148 260 178'/%3E%3Cpath d='M260 200C188 160 120 156 54 184 120 208 188 220 260 236'/%3E%3Cpath d='M260 200C332 160 400 156 466 184 400 208 332 220 260 236'/%3E%3Cpath d='M260 258C202 230 142 232 86 258 142 280 202 286 260 296'/%3E%3Cpath d='M260 258C318 230 378 232 434 258 378 280 318 286 260 296'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .photo-caption {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: color-mix(in oklab, var(--ink) 60%, transparent);
+  }
+
+  .status-pattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+
+  [data-status="pending"] .status-pattern {
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--ink) 12%, transparent) 0 5px,
+      transparent 5px 11px
+    );
+  }
+
+  [data-status="booked"] .status-pattern {
+    background-image: radial-gradient(
+      color-mix(in oklab, #f3f5f0 30%, transparent) 1px,
+      transparent 1.4px
+    );
+    background-size: 9px 9px;
+  }
+
+  [data-status="in_house"] .status-pattern {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        color-mix(in oklab, #f3f5f0 15%, transparent) 0 1px,
+        transparent 1px 8px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        color-mix(in oklab, #f3f5f0 15%, transparent) 0 1px,
+        transparent 1px 8px
+      );
+  }
+
+  [data-status="blocked"] .status-pattern {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      color-mix(in oklab, #14261f 30%, transparent) 0 5px,
+      transparent 5px 11px
+    );
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .print-plain {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
